@@ -29,9 +29,12 @@ jobs:
         run: npm ci
 
       - name: Build
+        # リポジトリ名が "church-dashboard" 以外の場合は VITE_BASE_PATH を変更してください
+        # 例: /<your-repo-name>/
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_PASSWORD_HASH: ${{ secrets.SITE_PASSWORD_HASH }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
