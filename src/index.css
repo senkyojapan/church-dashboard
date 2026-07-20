@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-feature-settings: 'tnum' 1;
+  }
+  body {
+    @apply bg-canvas dark:bg-canvas-dark text-ink dark:text-ink-dark;
+  }
+  ::selection {
+    @apply bg-accent/20;
+  }
+  *:focus-visible {
+    outline: 2px solid #4f5ded;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .num {
+    @apply font-mono tabular-nums;
+  }
+  .card {
+    @apply bg-surface dark:bg-surface-dark border border-border dark:border-border-dark rounded-xl shadow-card dark:shadow-cardDark;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-border dark:bg-border-dark rounded-full;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
